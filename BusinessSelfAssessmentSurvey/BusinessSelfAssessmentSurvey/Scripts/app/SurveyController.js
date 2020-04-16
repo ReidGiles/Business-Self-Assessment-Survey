@@ -15,7 +15,9 @@
         $scope.changeCategory = function (category) {
             $scope.questions = [];
             $scope.options = [];
+
             $scope.categoryTitle = category.title;
+
             $http.get("/api/survey/" + category.id).then(function (data, status, headers, config) {
                 angular.forEach(data.data.surveyQuestions, function (value, key) {
                     $scope.questions.push(value);
@@ -25,8 +27,7 @@
                     });
                 });
 
-                $scope.categoryTitle = data.data.title;
-                //$scope.options = data.data.surveyQuestions[0].options;
+                $scope.categoryTitle = data.data.title
             });
         }
     });

@@ -14,7 +14,7 @@
     <div class="card bg-info text-white" ng-repeat="question in questions">
         <div class="card-body">
             <h5 class="card-title">{{question.title}}</h5>
-            <a href="#" class="btn btn-primary" ng-repeat="option in options">{{option.title}}</a>
+            <a href="#" class="btn btn-primary" ng-repeat="option in question.options">{{option.title}}</a>
         </div>
     </div>
 
