@@ -31,6 +31,13 @@ namespace BusinessSelfAssessmentSurvey.Controllers
             return Ok(surveyCategory);
         }
 
+        [ResponseType(typeof(SurveyCategory))]
+        public async Task<IHttpActionResult> Get()
+        {
+            SurveyCategory[] surveyCategory = this.db.SurveyCategories.ToArray();
+            return Ok(surveyCategory);
+        }
+
         private async Task<SurveyCategory> NextSurveyCategory(int id)
         {
             return await this.db.SurveyCategories.FindAsync(id);
