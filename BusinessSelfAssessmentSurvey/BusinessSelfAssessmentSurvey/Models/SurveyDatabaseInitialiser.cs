@@ -22,7 +22,7 @@ namespace BusinessSelfAssessmentSurvey.Models
                 SurveyQuestions = (new SurveyQuestion[]
                 {
                     new SurveyQuestion { Title = "What is your company size? Size of your IT team (if any)", Options = GetOptions(4, new string[] { "1-5", "6-20", "21-50", "50+"}).ToList()},
-                    new SurveyQuestion { Title = "What is your growth ambition? (turnover, geo presence, etc…)", Options = GetOptions(3, new string[] { "Turnover", "Geo Presence", "Other"}).ToList()}
+                    new SurveyQuestion { Title = "What is your growth ambition? (turnover, geo presence, etc…)", Options = GetOptions(2, new string[] { "Turnover", "Geo Presence"}).ToList()}
                 }).ToList()
             });
 
@@ -51,7 +51,7 @@ namespace BusinessSelfAssessmentSurvey.Models
                 SurveyQuestions = (new SurveyQuestion[]
                 {
                     new SurveyQuestion { Title = "What is the size of your current development backlog", Options = GetOptions(4, new string[] { "1-5 Days", "6-30 Days", "30-90 Days", "90+ Days" }).ToList()},
-                    new SurveyQuestion { Title = "What is your process for approving and developing new software products or features?", Options = GetOptions(1, new string[] { "N/A" }).ToList()}
+                    new SurveyQuestion { Title = "What is your process for approving and developing new software products or features?"}
                 }).ToList()
             });
 
@@ -60,7 +60,7 @@ namespace BusinessSelfAssessmentSurvey.Models
                 Title = "Security",
                 SurveyQuestions = (new SurveyQuestion[]
                 {
-                    new SurveyQuestion { Title = "How is product security considered during product development?", Options = GetOptions(1, new string[] { "N/A" }).ToList()},
+                    new SurveyQuestion { Title = "How is product security considered during product development?"},
                 }).ToList()
             });
 
@@ -79,7 +79,7 @@ namespace BusinessSelfAssessmentSurvey.Models
                 Title = "Compliance",
                 SurveyQuestions = (new SurveyQuestion[]
                 {                  
-                    new SurveyQuestion { Title = "How - what processes, people and technology measures, have you put in place to ensure compliance?", Options = GetOptions(1, new string[] { "N/A" }).ToList()},
+                    new SurveyQuestion { Title = "How - what processes, people and technology measures, have you put in place to ensure compliance?"},
                     new SurveyQuestion { Title = "Do you have Data Breach Incident & Notification Policy & Procedures?", Options = GetOptions(2, new string[] { "Yes", "No" }).ToList()}
                 }).ToList()
             });

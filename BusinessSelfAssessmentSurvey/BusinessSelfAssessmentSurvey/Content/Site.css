@@ -22,3 +22,15 @@ select,
 textarea {
     max-width: 280px;
 }
+
+#submit {
+    margin-top: 40px;
+}
+
+#finish {
+    margin-top: 75px;
+}
+
+#questionCard {
+    margin-top: 40px;
+}

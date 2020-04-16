@@ -2,23 +2,30 @@
     ViewBag.Title = "Survey";
 }
 
-<div ng-app="SurveyApp" ng-controller="SurveyCtrl">
+    <div ng-app="SurveyApp" ng-controller="SurveyCtrl">
 
-    <div class="jumbotron">
-        <h1 class="display-3">Self Assessment Survey</h1>
-        <p class="lead">Please answer any questions that apply to your company, a rating will be provided on completion.</p>
-        <h2>Current category: {{categoryTitle}}</h2>
-        <a href="#" class="btn btn-primary" ng-repeat="category in categories" ng-click="changeCategory(category)">{{category.title}}</a>
-    </div>
-
-    <div class="card bg-info text-white" ng-repeat="question in questions">
-        <div class="card-body">
-            <h5 class="card-title">{{question.title}}</h5>
-            <a href="#" class="btn btn-primary" ng-repeat="option in question.options">{{option.title}}</a>
+        <div class="jumbotron">
+            <h1 class="display-3">Self Assessment Survey</h1>
+            <p class="lead">Please answer any questions that apply to your company, a rating will be provided on completion.</p>
+            <h2>Current category: {{categoryTitle}}</h2>
+            <a class="btn btn-primary" ng-repeat="category in categories" ng-click="changeCategory(category)">{{category.title}}</a>
         </div>
-    </div>
 
-</div>
+        <div id="questionCard" class="card bg-light text-white" ng-repeat="question in questions">
+            <div class="card-body">
+                <h4 class="card-title">{{question.title}}</h4>
+                <div ng-repeat="option in question.options">
+                    <input type="radio" name="radioAnswer{{question}}" ng-model="answer" ng-click="storeAnswer(question, option)">
+                    <label class="form-check-label" for="defaultCheck1">{{option.title}}</label>
+                </div>
+                <input type="text" class="form-control" placeholder="Other" aria-label="Other" aria-describedby="basic-addon2" ng-model="otherText" name="optionText" ng-change="storeText(question, otherText)">
+            </div>
+        </div>
+
+        <button id="submit" type="submit" class="btn btn-primary btn-lg btn-block" ng-click="submitCategory()">{{btnCategorySubmit}}</button>
+        <button id="finish" type="submit" class="btn btn-success btn-lg btn-block" ng-click="requestResults()">Request Results</button>
+
+    </div>
 
 @section scripts {
     @Scripts.Render("~/Scripts/angular.js")
