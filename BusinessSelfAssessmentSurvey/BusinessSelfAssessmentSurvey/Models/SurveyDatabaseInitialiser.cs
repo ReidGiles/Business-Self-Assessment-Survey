@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace BusinessSelfAssessmentSurvey.Models
 {
-    public class SurveyDatabaseInitialiser : CreateDatabaseIfNotExists<SurveyContext>
+    public class SurveyDatabaseInitialiser : DropCreateDatabaseAlways<SurveyContext>
     {
         /// <summary>
         /// Populate survey category, question and option data models
@@ -22,7 +22,7 @@ namespace BusinessSelfAssessmentSurvey.Models
                 SurveyQuestions = (new SurveyQuestion[]
                 {
                     new SurveyQuestion { Title = "What is your company size? Size of your IT team (if any)", Options = GetOptions(4, new string[] { "1-5", "6-20", "21-50", "50+"}).ToList()},
-                    new SurveyQuestion { Title = "What is your growth ambition? (turnover, geo presence, etc…)", Options = GetOptions(4, new string[] { "Turnover", "Geo Presence", "Other"}).ToList()}
+                    new SurveyQuestion { Title = "What is your growth ambition? (turnover, geo presence, etc…)", Options = GetOptions(3, new string[] { "Turnover", "Geo Presence", "Other"}).ToList()}
                 }).ToList()
             });
 
@@ -106,7 +106,7 @@ namespace BusinessSelfAssessmentSurvey.Models
         {
             SurveyOption[] surveyOptions = new SurveyOption[size];
 
-            for (int i = 0; i < surveyOptions.Length -1; i++)
+            for (int i = 0; i < surveyOptions.Length; i++)
             {
                 surveyOptions[i] = new SurveyOption();
                 surveyOptions[i].Title = options[i];
