@@ -39,10 +39,15 @@ namespace BusinessSelfAssessmentSurvey.Controllers
             return Ok(surveyCategory);
         }
 
-        public void Post(Object model)
+        [ResponseType(typeof(SurveyRating))]
+        public SurveyRating Post(Object model)
         {
             var jsonString = model.ToString();
             List<Result> result = JsonConvert.DeserializeObject<List<Result>>(jsonString);
+            SurveyRatingGenerator surveyRatingGenerator = new SurveyRatingGenerator();
+            SurveyRating surveyRating = surveyRatingGenerator.GetRating(result);
+
+            return surveyRating;
         }
 
         private async Task<SurveyCategory> NextSurveyCategory(int id)

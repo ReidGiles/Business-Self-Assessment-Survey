@@ -55,13 +55,15 @@
 
             if (exists == true) {
                 $scope.questionAnswers[index].answer = pAnswer.title;
+                $scope.questionAnswers[index].rating = pAnswer.rating;
             }
             else {
                 $scope.questionAnswers.push({
                     question: pQuestion.title,
                     answer: pAnswer.title,
                     category: $scope.currentCategory.title,
-                    other : $scope.otherText
+                    other: $scope.otherText,
+                    rating: pAnswer.rating
                 });
             }
 
@@ -86,7 +88,8 @@
                     question: pQuestion.title,
                     option: undefined,
                     category: $scope.currentCategory.title,
-                    other: text
+                    other: text,
+                    rating: 100
                 });
             }
 

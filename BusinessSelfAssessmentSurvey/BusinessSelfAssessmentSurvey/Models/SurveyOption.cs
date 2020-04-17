@@ -12,6 +12,9 @@ namespace BusinessSelfAssessmentSurvey.Models
         [Required]
         public string Title { get; set; }
 
+        [Required]
+        public int Rating { get; set; }
+
         [Key, Column(Order = 0), ForeignKey("SurveyQuestion")]
         public int QuestionID { get; set; }
 

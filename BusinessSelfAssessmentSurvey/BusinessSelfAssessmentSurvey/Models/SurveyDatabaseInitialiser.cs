@@ -106,10 +106,13 @@ namespace BusinessSelfAssessmentSurvey.Models
         {
             SurveyOption[] surveyOptions = new SurveyOption[size];
 
+            int baseRating = 100 / (size);
+
             for (int i = 0; i < surveyOptions.Length; i++)
             {
                 surveyOptions[i] = new SurveyOption();
                 surveyOptions[i].Title = options[i];
+                surveyOptions[i].Rating = baseRating * (i + 1);
             }
 
             return surveyOptions;

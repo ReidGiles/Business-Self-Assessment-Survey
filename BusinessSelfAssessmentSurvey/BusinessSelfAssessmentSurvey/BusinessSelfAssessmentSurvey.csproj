@@ -156,6 +156,10 @@
     <Compile Include="Migrations\202004151912175_init.designer.cs">
       <DependentUpon>202004151912175_init.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004170320271_ratings.cs" />
+    <Compile Include="Migrations\202004170320271_ratings.designer.cs">
+      <DependentUpon>202004170320271_ratings.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Result.cs" />
     <Compile Include="Models\SurveyCategory.cs" />
@@ -164,6 +168,8 @@
     <Compile Include="Models\SurveyOption.cs" />
     <Compile Include="Models\SurveyQuestion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SurveyRating.cs" />
+    <Compile Include="SurveyRatingGenerator.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\SurveyConnection.mdf" />
@@ -228,6 +234,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202004151912175_init.resx">
       <DependentUpon>202004151912175_init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004170320271_ratings.resx">
+      <DependentUpon>202004170320271_ratings.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

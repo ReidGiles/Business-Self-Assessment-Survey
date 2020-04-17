@@ -7,9 +7,10 @@ namespace BusinessSelfAssessmentSurvey.Models
 {
     public class Result
     {
-        public string question { get; set; }
-        public string answer { get; set; }
-        public string category { get; set; }
-        public string other { get; set; }
+        public string Question { get; set; }
+        public string Answer { get; set; }
+        public string Category { get; set; }
+        public string Other { get; set; }
+        public int Rating { get; set; }
     }
 }
