@@ -7,7 +7,7 @@
             <h1 class="display-3">Self Assessment Survey</h1>
             <p class="lead">Please answer any questions that apply to your company, a rating will be provided on completion.</p>
             <h2>Current category: {{categoryTitle}}</h2>
-            <a class="btn btn-primary" ng-repeat="category in categories" ng-click="changeCategory(category)">{{category.title}}</a>
+            <a id="categ" class="btn btn-primary" ng-repeat="category in categories" ng-click="changeCategory(category)">{{category.title}}</a>
         </div>
 
         <div id="questionCard" class="card bg-light text-white" ng-repeat="question in questions">
