@@ -18,7 +18,7 @@
                     <input type="radio" name="radioAnswer{{question}}" ng-model="answer" ng-click="storeAnswer(question, option)">
                     <label class="form-check-label" for="defaultCheck1">{{option.title}}</label>
                 </div>
-                <input type="text" class="form-control" placeholder="Other" aria-label="Other" aria-describedby="basic-addon2" ng-model="otherText" name="optionText" ng-change="storeText(question, otherText)">
+                <input type="text" class="form-control" placeholder="Other" aria-label="Other" aria-describedby="basic-addon2" ng-model="otherText" name="optionText" ng-blur="storeText(question, otherText)">
             </div>
         </div>
 

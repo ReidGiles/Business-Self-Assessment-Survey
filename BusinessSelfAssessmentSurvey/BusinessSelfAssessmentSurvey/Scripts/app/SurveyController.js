@@ -43,36 +43,54 @@
             
         }
 
-        $scope.storeAnswer = function (question, answer) {
-            if ($scope.questionAnswers.findIndex(x => x.key.title === question.title) != -1) {
-                $scope.questionAnswers[$scope.questionAnswers.findIndex(x => x.key.title === question.title)].value = answer;
+        $scope.storeAnswer = function (pQuestion, pAnswer) {
+            var exists = false;
+            var index;
+            angular.forEach($scope.questionAnswers, function (value, key) {
+                if (value.question === pQuestion.title) {
+                    exists = true;
+                    index = $scope.questionAnswers.indexOf(value);
+                }
+            });
+
+            if (exists == true) {
+                $scope.questionAnswers[index].answer = pAnswer.title;
             }
             else {
                 $scope.questionAnswers.push({
-                    key: question,
-                    value: answer,
-                    category: $scope.currentCategory,
+                    question: pQuestion.title,
+                    answer: pAnswer.title,
+                    category: $scope.currentCategory.title,
                     other : $scope.otherText
                 });
             }
 
-            console.log(question.title + ": " + answer.title);
+            console.log(pQuestion.title + ": " + pAnswer.title);
         }
 
-        $scope.storeText = function (question, text) {
-            if ($scope.questionAnswers.findIndex(x => x.key.title === question.title) != -1) {
-                $scope.questionAnswers[$scope.questionAnswers.findIndex(x => x.key.title === question.title)].other = text;
+        $scope.storeText = function (pQuestion, text) {
+            var exists = false;
+            var index;
+            angular.forEach($scope.questionAnswers, function (value, key) {
+                if (value.question === pQuestion.title) {
+                    exists = true;
+                    index = $scope.questionAnswers.indexOf(value);
+                }
+            });
+
+            if (exists == true) {
+                $scope.questionAnswers[index].other = text;
             }
             else {
                 $scope.questionAnswers.push({
-                    key: question,
-                    value: answer,
-                    category: $scope.currentCategory,
-                    other: $scope.otherText
+                    question: pQuestion.title,
+                    option: undefined,
+                    category: $scope.currentCategory.title,
+                    other: text
                 });
             }
 
-            console.log(question.title + ": " + answer.title);
+            console.log(pQuestion.title + ": " + pAnswer.title);
         }
 
         $scope.submitCategory = function () {
@@ -88,5 +106,8 @@
         $scope.requestResults = function () {
             $scope.questions = [];
             $scope.options = [];
+
+            $http.post("/api/survey/", JSON.stringify($scope.questionAnswers)).then(function (data, status, headers, config) {
+            });
         }
     });

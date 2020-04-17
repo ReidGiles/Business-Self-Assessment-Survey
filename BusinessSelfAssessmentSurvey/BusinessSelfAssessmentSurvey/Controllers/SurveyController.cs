@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using BusinessSelfAssessmentSurvey.Models;
+using Newtonsoft.Json;
 
 namespace BusinessSelfAssessmentSurvey.Controllers
 {
@@ -36,6 +37,12 @@ namespace BusinessSelfAssessmentSurvey.Controllers
         {
             SurveyCategory[] surveyCategory = this.db.SurveyCategories.ToArray();
             return Ok(surveyCategory);
+        }
+
+        public void Post(Object model)
+        {
+            var jsonString = model.ToString();
+            List<Result> result = JsonConvert.DeserializeObject<List<Result>>(jsonString);
         }
 
         private async Task<SurveyCategory> NextSurveyCategory(int id)
