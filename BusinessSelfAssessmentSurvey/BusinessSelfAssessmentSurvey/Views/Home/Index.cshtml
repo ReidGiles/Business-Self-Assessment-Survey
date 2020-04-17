@@ -3,8 +3,7 @@
 }
 
     <div ng-app="SurveyApp" ng-controller="SurveyCtrl">
-
-        <div class="jumbotron">
+        <div class="jumbotron" ng-show="toggleView">
             <h1 class="display-3">Self Assessment Survey</h1>
             <p class="lead">Please answer any questions that apply to your company, a rating will be provided on completion.</p>
             <h2>Current category: {{categoryTitle}}</h2>
@@ -15,15 +14,30 @@
             <div class="card-body">
                 <h4 class="card-title">{{question.title}}</h4>
                 <div ng-repeat="option in question.options">
-                    <input type="radio" name="radioAnswer{{question}}" ng-model="answer" ng-click="storeAnswer(question, option)">
-                    <label class="form-check-label" for="defaultCheck1">{{option.title}}</label>
+                    <input type="radio" name="radioAnswer{{question}}" ng-model="answer" ng-click="storeAnswer(question, option)" ng-checked="false">
+                    <label class="form-check-label">{{option.title}}</label>
                 </div>
-                <input type="text" class="form-control" placeholder="Other" aria-label="Other" aria-describedby="basic-addon2" ng-model="otherText" name="optionText" ng-blur="storeText(question, otherText)">
+                <input type="text" class="form-control" placeholder="Other" aria-label="Other" ng-model="otherText" name="optionText" ng-blur="storeText(question, otherText)">
             </div>
         </div>
 
-        <button id="submit" type="submit" class="btn btn-primary btn-lg btn-block" ng-click="submitCategory()">{{btnCategorySubmit}}</button>
-        <button id="finish" type="submit" class="btn btn-success btn-lg btn-block" ng-click="requestResults()">Request Results</button>
+        <div ng-show="toggleView">
+            <button id="submit" type="submit" class="btn btn-primary btn-lg btn-block" ng-click="submitCategory()">{{btnCategorySubmit}}</button>
+            <button id="finish" type="submit" class="btn btn-success btn-lg btn-block" ng-click="requestResults()">Request Results</button>
+        </div>       
+
+        <div class="jumbotron" ng-show="toggleResults">
+            <h1 class="display-3">Results</h1>
+            <h2>Overall Rating: {{overallRating}} / 1300 ({{((overallRating / 1300) | number:2) * 100}}%)</h2>
+            <h4>Admin Rating: {{adminRating}} / 200</h4>
+            <h4>Business Rating: {{businessRating}} / 200</h4>
+            <h4>Architecture Rating: {{architectureRating}} / 100</h4>
+            <h4>Development Rating: {{developmentRating}} / 200</h4>
+            <h4>Security Rating: {{securityRating}} / 100</h4>
+            <h4>Documentation Rating: {{documentationRating}} / 200</h4>
+            <h4>Compliance Rating: {{complianceRating}} / 200</h4>
+            <h4>Processes Rating: {{processesRating}} / 100</h4>
+        </div>
 
     </div>
 

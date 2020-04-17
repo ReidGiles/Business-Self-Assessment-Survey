@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace BusinessSelfAssessmentSurvey.Models
 {
-    public class SurveyDatabaseInitialiser : DropCreateDatabaseAlways<SurveyContext>
+    public class SurveyDatabaseInitialiser : CreateDatabaseIfNotExists<SurveyContext>
     {
         /// <summary>
         /// Populate survey category, question and option data models
@@ -41,7 +41,7 @@ namespace BusinessSelfAssessmentSurvey.Models
                 Title = "Architecture",
                 SurveyQuestions = (new SurveyQuestion[]
                 {
-                    new SurveyQuestion { Title = "Do you maintain a series of documents / diagrams capturing your architecture?", Options = GetOptions(2, new string[] { "Yes", "No"}).ToList()},
+                    new SurveyQuestion { Title = "Do you maintain a series of documents / diagrams capturing your architecture?", Options = GetOptions(2, new string[] { "No", "Yes"}).ToList()},
                 }).ToList()
             });
 
@@ -69,8 +69,8 @@ namespace BusinessSelfAssessmentSurvey.Models
                 Title = "Documentation",
                 SurveyQuestions = (new SurveyQuestion[]
                 {
-                    new SurveyQuestion { Title = "Can you provide copies of your hosting / cloud service provider agreement?", Options = GetOptions(2, new string[] { "Yes", "No" }).ToList()},
-                    new SurveyQuestion { Title = "Do you have a documented IT roadmap?", Options = GetOptions(2, new string[] { "Yes", "No" }).ToList()}
+                    new SurveyQuestion { Title = "Can you provide copies of your hosting / cloud service provider agreement?", Options = GetOptions(2, new string[] { "No", "Yes" }).ToList()},
+                    new SurveyQuestion { Title = "Do you have a documented IT roadmap?", Options = GetOptions(2, new string[] { "No", "Yes" }).ToList()}
                 }).ToList()
             });
 
@@ -80,7 +80,7 @@ namespace BusinessSelfAssessmentSurvey.Models
                 SurveyQuestions = (new SurveyQuestion[]
                 {                  
                     new SurveyQuestion { Title = "How - what processes, people and technology measures, have you put in place to ensure compliance?"},
-                    new SurveyQuestion { Title = "Do you have Data Breach Incident & Notification Policy & Procedures?", Options = GetOptions(2, new string[] { "Yes", "No" }).ToList()}
+                    new SurveyQuestion { Title = "Do you have Data Breach Incident & Notification Policy & Procedures?", Options = GetOptions(2, new string[] { "No", "Yes" }).ToList()}
                 }).ToList()
             });
             
@@ -89,7 +89,7 @@ namespace BusinessSelfAssessmentSurvey.Models
                 Title = "Processes",
                 SurveyQuestions = (new SurveyQuestion[]
                 {
-                    new SurveyQuestion { Title = "Do you have a documented Support / incident runbook?", Options = GetOptions(2, new string[] { "Yes", "No" }).ToList()},
+                    new SurveyQuestion { Title = "Do you have a documented Support / incident runbook?", Options = GetOptions(2, new string[] { "No", "Yes" }).ToList()},
                 }).ToList()
             });
 

@@ -10,6 +10,8 @@
         $scope.submitCategory = false;
         $scope.otherText;
         $scope.btnCategorySubmit = "Submit Category";
+        $scope.toggleView = true;
+        surveyRating = [];
 
         $http.get("/api/survey/").then(function (data, status, headers, config) {
             angular.forEach(data.data, function (value, key) {
@@ -109,8 +111,22 @@
         $scope.requestResults = function () {
             $scope.questions = [];
             $scope.options = [];
+            $scope.toggleView = false;
+            $scope.toggleResults = true;
 
             $http.post("/api/survey/", JSON.stringify($scope.questionAnswers)).then(function (data, status, headers, config) {
+                surveyRating = data.data;
+
+                admin = $scope.adminRating = surveyRating.admin;
+                business = $scope.businessRating = surveyRating.business;
+                architecture = $scope.architectureRating = surveyRating.architecture;
+                development = $scope.developmentRating = surveyRating.development;
+                security = $scope.securityRating = surveyRating.security;
+                documentation = $scope.documentationRating = surveyRating.documentation;
+                compliance = $scope.complianceRating = surveyRating.compliance;
+                processes = $scope.processesRating = surveyRating.processes;
+
+                $scope.overallRating = admin + business + architecture + development + security + documentation + compliance + processes;
             });
         }
     });

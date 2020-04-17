@@ -40,14 +40,25 @@ namespace BusinessSelfAssessmentSurvey.Controllers
         }
 
         [ResponseType(typeof(SurveyRating))]
-        public SurveyRating Post(Object model)
+        public async Task<SurveyRating> Post(Object model)
         {
             var jsonString = model.ToString();
             List<Result> result = JsonConvert.DeserializeObject<List<Result>>(jsonString);
             SurveyRatingGenerator surveyRatingGenerator = new SurveyRatingGenerator();
             SurveyRating surveyRating = surveyRatingGenerator.GetRating(result);
 
+            await StoreAsync(surveyRating);
+
             return surveyRating;
+        }
+
+        private async Task<bool> StoreAsync(SurveyRating rating)
+        {
+            this.db.SurveyRatings.Add(rating);
+
+            await this.db.SaveChangesAsync();
+
+            return true;
         }
 
         private async Task<SurveyCategory> NextSurveyCategory(int id)
